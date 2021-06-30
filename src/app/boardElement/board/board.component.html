@@ -1,0 +1,10 @@
+<p>board works!</p>
+
+<table class = 'pathVisualizer-board'>
+    <tr *ngFor = "let row of board; let r = index">
+        <td *ngFor = "let node of row; let c = index">
+            <div class ="node" id="node-{{r}}-{{c}}"></div>
+        </td>
+    </tr>
+</table>
+

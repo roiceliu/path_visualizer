@@ -9,9 +9,20 @@
 table{
     border-collapse:collapse;
     border:1px solid black;
+    padding:0;
 }
 
 td{
     padding:0;
+}
+
+.node-highlight{
+    background-color: lightseagreen;
+    transition: 0.3s all ease-in-out;
+}
+
+.node-regular{
+    background-color: pink;
+    transition: 0.3s all ease-in-out;
 }
 

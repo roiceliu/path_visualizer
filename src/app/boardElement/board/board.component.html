@@ -3,7 +3,7 @@
 <table class = 'pathVisualizer-board'>
     <tr *ngFor = "let row of board; let r = index">
         <td *ngFor = "let node of row; let c = index">
-            <div class ="node" id="node-{{r}}-{{c}}"></div>
+            <div #node class ="node" id="node-{{r}}-{{c}}" (click) = "check(r, c)" [ngClass] = "board[r][c].IsVisited ? 'node-highlight' : 'node-normal'"></div>
         </td>
     </tr>
 </table>

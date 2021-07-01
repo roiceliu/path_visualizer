@@ -22,4 +22,9 @@ export class BoardComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  check(row: number, col: number) {
+    let node = this.board[row][col];
+    node.IsVisited = !node.IsVisited;
+  }
+
 }

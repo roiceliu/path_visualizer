@@ -16,8 +16,13 @@ td{
     padding:0;
 }
 
-.node-highlight{
-    background-color: lightseagreen;
+.node-start{
+    background-color: orange;
+    transition: 0.3s all ease-in-out;
+}
+
+.node-end{
+    background-color: lightskyblue;
     transition: 0.3s all ease-in-out;
 }
 
@@ -25,4 +30,24 @@ td{
     background-color: pink;
     transition: 0.3s all ease-in-out;
 }
+
+.node-visiting{
+    background-color: green;
+    transition: 0.3s all ease-in-out;
+}
+
+#startNode{
+    height:10px;
+    width: 10px;
+    z-index: 100;
+    top:50%;
+    left:50%;
+    position: absolute;
+}
+
+.container{
+    position: relative;
+}
+
+
 

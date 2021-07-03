@@ -1,9 +1,16 @@
 <p>board works!</p>
 
-<table class = 'pathVisualizer-board'>
+<button (click) = 'dfs(start_col, start_col)'>DFS</button>
+<table cdkDropList class = 'pathVisualizer-board'  (cdkDropListDropped) ="drop($event)" >
     <tr *ngFor = "let row of board; let r = index">
-        <td *ngFor = "let node of row; let c = index">
-            <div #node class ="node" id="node-{{r}}-{{c}}" (click) = "check(r, c)" [ngClass] = "board[r][c].IsVisited ? 'node-highlight' : 'node-normal'"></div>
+        <td *ngFor = "let node of row; let c = index" class="container">
+            <div #node class ="node" id="node-{{r}}-{{c}}" [ngClass] = "node.state === State.visited? 'node-visiting' : (node.IsStart? 'node-start': node.IsEnd? 'node-end' : 'node-regular') " (click) ="check(r,c)"></div>
+<!-- "node.IsStart? 'node-start' : (node.IsEnd? 'node-end' : (node.state = State.visiting? 'node-visiting' : 'node-regular') )" -->
+            <!-- TODO: this is for draggable start node & end Node -->
+            <!-- <div cdkDrag *ngIf = "(r === start_row )&& (c === start_col)"  [ngClass] ="'node-end'" id = "startNode">
+            </div>
+            <div cdkDrag *ngIf = "(r === end_row) && (c === end_col)"  [ngClass] ="'node-end'" id = "endNode">     
+            </div> -->
         </td>
     </tr>
 </table>

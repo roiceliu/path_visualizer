@@ -36,6 +36,11 @@ td{
     transition: 0.3s all ease-in-out;
 }
 
+.node-visited{
+    background-color: red;
+    transition: 0.3s all ease-in-out;
+}
+
 #startNode{
     height:10px;
     width: 10px;

@@ -1,8 +1,6 @@
 export class Node{
     row: number;
     col: number;
-    IsStart: boolean;
-    IsEnd: boolean;
     state: State;
 
     
@@ -11,11 +9,9 @@ export class Node{
         this.row = row;
         this.col = col;
         this.state = State.clean;
-        this.IsStart = false;
-        this.IsEnd = false;
     }
 }
 
 export enum State{
-    clean, visited, visiting
+    clean, visited, visiting, start, end, wall
 }

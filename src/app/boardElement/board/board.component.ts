@@ -51,7 +51,8 @@ export class BoardComponent implements OnInit {
   test() {
     let randRow = Math.floor(Math.random() * 15);
     let randCol = Math.floor(Math.random() * 30);
-    this.board[randRow][randCol].state = State.visiting;
+    if (this.board[randRow][randCol].state === State.start || this.board[randRow][randCol].state === State.end) this.test();
+    else this.board[randRow][randCol].state = State.visiting;
   }
 
   /**
@@ -98,8 +99,11 @@ export class BoardComponent implements OnInit {
 
       //finished marking the shortest [path]
       if (this.board[r][c].state === State.start) return;
-
       this.board[r][c].state = State.onShortestPath;
+      // setTimeout(() => {
+      //   this.board[r][c].state = State.onShortestPath;
+      //   this.ref.markForCheck();
+      // }, this.delay * 2);
     }
     
   }
@@ -143,8 +147,17 @@ export class BoardComponent implements OnInit {
 
           if (this.IsValidForBFS(r_new, c_new)) {
             queue.push([r_new, c_new]);
-            this.board[r_new][c_new].state = State.visiting;
             this._prevMap.set(`${r_new} ${c_new}`, `${rr} ${cc}`);
+            
+
+            //FIXME: asynch work is messing things up on find shortest path,
+            //also since bfs is not recursive, the set-timeout is very slow as well
+            
+            //visualization
+            setTimeout(() => {
+              this.board[r_new][c_new].state = State.visiting;
+              this.ref.markForCheck();
+            }, 1);
           }
         }
         queue.shift();

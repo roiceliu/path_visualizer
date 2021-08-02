@@ -3,9 +3,11 @@
 <button (click) = 'test()'>hello</button>
 <hr/>
 
-<button (click) = 'dfs(start_col, start_col)'>DFS</button>
+<button (click) = 'RunAlgo("dfs")'>DFS</button>
+<button (click) = 'RunAlgo("bfs")'>BFS</button>
 
 <table cdkDropList class = 'pathVisualizer-board'  (cdkDropListDropped) ="drop($event)" >
+
 
     <tr *ngFor = "let row of board; let r = index">
         <td *ngFor = "let node of row; let c = index" class="container">
@@ -16,9 +18,10 @@
                 'node-wall': State.wall === node.state,
                 'node-regular': State.clean === node.state,
                 'node-visiting': State.visiting === node.state,
-                'node-visited' : State.visited === node.state
+                'node-visited' : State.visited === node.state,
+                'node-shortestPath': State.onShortestPath === node.state
             }
-            " (click) ="check(r,c)"></div>
+            "  ></div>
 
             
 <!-- "node.IsStart? 'node-start' : (node.IsEnd? 'node-end' : (node.state = State.visiting? 'node-visiting' : 'node-regular') )" -->

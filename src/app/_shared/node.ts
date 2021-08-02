@@ -13,5 +13,5 @@ export class Node{
 }
 
 export enum State{
-    clean, visited, visiting, start, end, wall
+    clean, visited, visiting, start, end, wall, onShortestPath
 }
